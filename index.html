@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lynda Levy — Computer Science Portfolio</title>
+<meta name="description" content="Computer science portfolio of Lynda Levy: software projects, education, and experience." />
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --surface: #ffffff;
+    --text: #1c1c1a;
+    --text-muted: #55534c;
+    --accent: #2d5a4b;
+    --accent-soft: #e4ede8;
+    --border: #ddd8cb;
+    --chip-bg: #ece8dc;
+    --radius: 10px;
+    --maxw: 860px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15140f;
+      --surface: #1e1c16;
+      --text: #f1efe6;
+      --text-muted: #b7b2a3;
+      --accent: #7fbfa4;
+      --accent-soft: #23332c;
+      --border: #38352a;
+      --chip-bg: #2a2820;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover, a:focus { text-decoration: underline; }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header.hero {
+    padding: 56px 0 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  header.hero .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 10px;
+  }
+
+  header.hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  header.hero .role {
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 18px;
+  }
+
+  header.hero p.lede {
+    max-width: 620px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin: 0 0 22px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    font-size: 0.92rem;
+  }
+
+  nav.sections {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+  }
+
+  nav.sections .wrap {
+    display: flex;
+    gap: 24px;
+    padding: 14px 20px;
+    overflow-x: auto;
+  }
+
+  nav.sections a {
+    color: var(--text);
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  nav.sections a:hover { color: var(--accent); text-decoration: none; }
+
+  main section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  main section:last-of-type { border-bottom: none; }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+
+  p.section-deck {
+    color: var(--text-muted);
+    margin: 0 0 28px;
+    font-size: 0.95rem;
+  }
+
+  /* Education */
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 24px;
+  }
+
+  .edu-card h3 { margin: 0 0 4px; font-size: 1.15rem; }
+  .edu-card .school { color: var(--accent); font-weight: 600; margin: 0 0 2px; }
+  .edu-card .meta { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 14px; }
+  .edu-card .minors { font-size: 0.9rem; color: var(--text-muted); }
+  .edu-card .minors strong { color: var(--text); }
+
+  .stat-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 18px 0 0;
+  }
+
+  .stat {
+    background: var(--accent-soft);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .stat strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+
+  .skill-group h4 {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .chip {
+    background: var(--chip-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.82rem;
+    color: var(--text);
+  }
+
+  /* Projects */
+  .project-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+
+  .project-card .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .project-card h3 { margin: 0; font-size: 1.1rem; }
+
+  .category-badge {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+
+  .project-card p.desc {
+    color: var(--text-muted);
+    margin: 10px 0 14px;
+    font-size: 0.94rem;
+  }
+
+  .project-card .chips { margin-bottom: 12px; }
+
+  .project-links a {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  /* Experience */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .exp-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+  }
+
+  .exp-item .top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .exp-item h3 { margin: 0; font-size: 1.05rem; }
+  .exp-item .company { color: var(--accent); font-weight: 600; }
+  .exp-item .dates { color: var(--text-muted); font-size: 0.85rem; white-space: nowrap; }
+  .exp-item .location { color: var(--text-muted); font-size: 0.85rem; margin: 2px 0 12px; }
+  .exp-item p.desc { margin: 0 0 12px; font-size: 0.92rem; color: var(--text-muted); }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 2px 9px;
+  }
+
+  footer {
+    padding: 32px 0 56px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  footer .contact-row {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Lynda Levy</h1>
+    <p class="role">Computer Science Student &amp; Software Developer</p>
+    <p class="lede">
+      Studying Computer Science in Monmouth University's Honors College. I build iOS apps,
+      web tools, and database-backed systems, and I like staying on the hook for how they
+      actually work once they ship.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:lyndablevy@gmail.com">lyndablevy@gmail.com</a>
+      <a href="https://github.com/lyndalevy">GitHub</a>
+      <a href="https://www.linkedin.com/in/lyndablevy/">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<nav class="sections">
+  <div class="wrap">
+    <a href="#education">Education</a>
+    <a href="#software">Software Projects</a>
+    <a href="#experience">Experience</a>
+  </div>
+</nav>
+
+<main>
+  <section id="education">
+    <div class="wrap">
+      <h2 class="section-title">Education</h2>
+      <p class="section-deck">Degree, coursework focus, and technical skills.</p>
+
+      <div class="edu-card">
+        <h3>B.A. Computer Science</h3>
+        <p class="school">Monmouth University Honors College</p>
+        <p class="meta">September 2023 &ndash; May 2027 &middot; GPA 3.7 / 4.0</p>
+        <p class="minors"><strong>Minors:</strong> Graphic Design, Anthropology, Cybersecurity</p>
+        <div class="stat-strip">
+          <div class="stat"><strong>3.7 / 4.0</strong>Grade point average</div>
+          <div class="stat"><strong>Top 500</strong>of ~7,000 in the National Cyber League</div>
+          <div class="stat"><strong>2</strong>Honor societies: Phi Eta Sigma &amp; Upsilon Pi Epsilon</div>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Java</span>
+            <span class="chip">Swift</span>
+            <span class="chip">C</span>
+            <span class="chip">x86 Assembly</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>iOS</h4>
+          <div class="chips">
+            <span class="chip">Xcode</span>
+            <span class="chip">Swift</span>
+            <span class="chip">SwiftUI</span>
+            <span class="chip">MapKit</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Databases</h4>
+          <div class="chips">
+            <span class="chip">MySQL</span>
+            <span class="chip">MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Web &amp; Tools</h4>
+          <div class="chips">
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML/CSS</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">Vercel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="software">
+    <div class="wrap">
+      <h2 class="section-title">Software Projects</h2>
+      <p class="section-deck">iOS, web, and things I wanted to exist.</p>
+
+      <div class="project-grid">
+
+        <div class="project-card">
+          <div class="top-row">
+            <h3>This Portfolio</h3>
+            <span class="category-badge">Web</span>
+          </div>
+          <p class="desc">Designed and built as a publication: a typographic grid, per-chapter color, and a media pipeline that compresses 376&nbsp;MB of source files down to 34&nbsp;MB so it still loads fast on a phone.</p>
+          <div class="chips">
+            <span class="chip">Firebase</span>
+            <span class="chip">Claude Code</span>
+          </div>
+          <div class="project-links"><a href="https://lyndasportfolio.com">Original site &rarr;</a></div>
+        </div>
+
+        <div class="project-card">
+          <div class="top-row">
+            <h3>Lynda &amp; Sivan's Photo Gallery</h3>
+            <span class="category-badge">Web</span>
+          </div>
+          <p class="desc">A live wedding gallery that reads straight from a public iCloud shared album. It calls Apple's shared-stream API, follows the partition redirect, and resolves each photo's checksum into a signed CDN link at whatever size the page needs.</p>
+          <div class="chips">
+            <span class="chip">Claude Code</span>
+            <span class="chip">Vercel</span>
+          </div>
+          <div class="project-links"><a href="https://l-and-s-wedding.vercel.app">Open the gallery &rarr;</a></div>
+        </div>
+
+        <div class="project-card">
+          <div class="top-row">
+            <h3>MCB Weekly Updates</h3>
+            <span class="category-badge">iOS</span>
+          </div>
+          <p class="desc">An app built for Monmouth Custom Builders, a luxury-home general contractor, giving clients a running feed of weekly progress on their projects.</p>
+          <div class="chips">
+            <span class="chip">Swift</span>
+            <span class="chip">Xcode</span>
+            <span class="chip">Firebase</span>
+          </div>
+          <div class="project-links"><a href="https://github.com/lyndalevy/MCBWeeklyUpdates">GitHub &rarr;</a></div>
+        </div>
+
+        <div class="project-card">
+          <div class="top-row">
+            <h3>Weather App</h3>
+            <span class="category-badge">iOS</span>
+          </div>
+          <p class="desc">Real-time forecasts from the OpenWeatherMap API, with location-based lookup and an interface that gets out of the way.</p>
+          <div class="chips">
+            <span class="chip">Swift</span>
+            <span class="chip">SwiftUI</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">Xcode</span>
+          </div>
+          <div class="project-links"><a href="https://github.com/lyndalevy/weatherApp">GitHub &rarr;</a></div>
+        </div>
+
+        <div class="project-card">
+          <div class="top-row">
+            <h3>Cybersecurity Awareness Game</h3>
+            <span class="category-badge">Web</span>
+          </div>
+          <p class="desc">A timed, scored quiz game that teaches security habits by making you play rather than sit through a video. Built out of my Cyber Bean Games research.</p>
+          <div class="chips">
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML/CSS</span>
+            <span class="chip">Python</span>
+            <span class="chip">Vercel</span>
+          </div>
+          <div class="project-links"><a href="https://aiybersecuritygame.vercel.app">Play it &rarr;</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-deck">Eight roles across design, code, and teaching.</p>
+
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Social Media Intern &middot; <span class="company">Commvault</span></h3>
+            <span class="dates">May 2026 &ndash; August 2026</span>
+          </div>
+          <p class="location">Tinton Falls, NJ &middot; Hybrid</p>
+          <div class="tag-row"><span class="tag">Marketing</span><span class="tag">Design</span></div>
+          <p class="desc">Create and manage social content across 10+ platforms, holding brand messaging steady while growing organic reach on every channel.</p>
+          <div class="chips">
+            <span class="chip">Social Strategy</span>
+            <span class="chip">Content Creation</span>
+            <span class="chip">Sprout Social</span>
+            <span class="chip">Smartsheet</span>
+            <span class="chip">Canva</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Founder &amp; Lead Photographer &middot; <span class="company">Studio L Photography</span></h3>
+            <span class="dates">March 2025 &ndash; Present</span>
+          </div>
+          <p class="location">Eatontown, NJ</p>
+          <div class="tag-row"><span class="tag">Photography</span></div>
+          <p class="desc">Founded and run a photography business shooting real estate, events, and nature. Every part of the job is mine: lighting, capture, editing and retouching, client communication, and booking.</p>
+          <div class="chips">
+            <span class="chip">Real Estate Photography</span>
+            <span class="chip">Lightroom</span>
+            <span class="chip">Lighting</span>
+            <span class="chip">Client Relations</span>
+            <span class="chip">Business Management</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Hebrew Phonics Educator &middot; <span class="company">Chabad of the Shore</span></h3>
+            <span class="dates">September 2021 &ndash; Present</span>
+          </div>
+          <p class="location">Long Branch, NJ</p>
+          <div class="tag-row"><span class="tag">Education</span></div>
+          <p class="desc">Teach Hebrew phonics alongside Jewish studies and cultural education to students aged 4&ndash;13, building curriculum that supports both language development and a sense of connection.</p>
+          <div class="chips">
+            <span class="chip">Teaching</span>
+            <span class="chip">Curriculum Design</span>
+            <span class="chip">Hebrew</span>
+            <span class="chip">Youth Engagement</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Coding &amp; Computers Educator &middot; <span class="company">iCode Shrewsbury</span></h3>
+            <span class="dates">December 2025 &ndash; May 2026</span>
+          </div>
+          <p class="location">Shrewsbury, NJ</p>
+          <div class="tag-row"><span class="tag">Education</span><span class="tag">Software</span></div>
+          <p class="desc">Taught coding, game design, and computer skills to students aged 4&ndash;13 through project-based lessons: Minecraft modding, VEX robotics, 3D printing.</p>
+          <div class="chips">
+            <span class="chip">Teaching</span>
+            <span class="chip">Curriculum Design</span>
+            <span class="chip">Minecraft Modding</span>
+            <span class="chip">VEX Robotics</span>
+            <span class="chip">3D Printing</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Marketing, Communications &amp; Graphic Design Intern &middot; <span class="company">Oak Hill Academy</span></h3>
+            <span class="dates">September 2025 &ndash; May 2026</span>
+          </div>
+          <p class="location">Lincroft, NJ</p>
+          <div class="tag-row"><span class="tag">Design</span><span class="tag">Marketing</span><span class="tag">Photography</span></div>
+          <p class="desc">Designed print and digital marketing &mdash; branding assets, flyers, postcards, brochures, social content &mdash; to raise visibility for school programs and events, and supported outreach to prospective families, parents, and staff.</p>
+          <div class="chips">
+            <span class="chip">Graphic Design</span>
+            <span class="chip">Video Editing</span>
+            <span class="chip">Social Media</span>
+            <span class="chip">Marketing</span>
+            <span class="chip">Canva</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Assistant Office Manager &amp; Visual Content Specialist &middot; <span class="company">Monmouth Custom Builders</span></h3>
+            <span class="dates">March 2023 &ndash; May 2026</span>
+          </div>
+          <p class="location">Deal, NJ</p>
+          <div class="tag-row"><span class="tag">Operations</span><span class="tag">Photography</span><span class="tag">Software</span></div>
+          <p class="desc">Handled technical support and website administration while keeping office processes organized, and photographed finished luxury properties for marketing materials and client presentations.</p>
+          <div class="chips">
+            <span class="chip">Real Estate Photography</span>
+            <span class="chip">Website Administration</span>
+            <span class="chip">Technical Support</span>
+            <span class="chip">Office Management</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>State Legislative Intern &middot; <span class="company">Senator Vin Gopal &mdash; NJ State Senate</span></h3>
+            <span class="dates">May 2023 &ndash; August 2023</span>
+          </div>
+          <p class="location">Ocean, NJ</p>
+          <div class="tag-row"><span class="tag">Operations</span></div>
+          <p class="desc">Gave expert testimony in support of Bill A4720, advancing Holocaust education in New Jersey. Supported District 11 operations through constituent communication, document management, and community outreach.</p>
+          <div class="chips">
+            <span class="chip">Public Speaking</span>
+            <span class="chip">Policy Advocacy</span>
+            <span class="chip">Community Engagement</span>
+            <span class="chip">Document Management</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="top-row">
+            <h3>Business Operations Intern &middot; <span class="company">InSite Engineering &amp; Surveying</span></h3>
+            <span class="dates">May 2023 &ndash; August 2023</span>
+          </div>
+          <p class="location">Wall Township, NJ</p>
+          <div class="tag-row"><span class="tag">Operations</span></div>
+          <p class="desc">Rebuilt the company's document archive into an accessible filing system, and provided administrative support across day-to-day office operations.</p>
+          <div class="chips">
+            <span class="chip">Document Management</span>
+            <span class="chip">Office Operations</span>
+            <span class="chip">Administrative Support</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-row">
+      <a href="mailto:lyndablevy@gmail.com">lyndablevy@gmail.com</a>
+      <a href="https://github.com/lyndalevy">GitHub</a>
+      <a href="https://www.linkedin.com/in/lyndablevy/">LinkedIn</a>
+    </div>
+    <p>Designed and built by Lynda Levy</p>
+  </div>
+</footer>
+
+</body>
+</html>
